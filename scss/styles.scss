@@ -1,0 +1,70 @@
+// ==========
+// VENDOR LIBRARIES
+// ==========
+
+@import "lib/lib";
+@import "compass/layout.scss";
+@import "compass/css3/images";
+@import "compass/css3/transition";
+@import "compass/css3/border-radius";
+@import "compass/css3/box-shadow";
+@import "compass/layout/sticky-footer";
+@import "compass/typography/vertical_rhythm";
+
+// ==========
+// MIXINS & FUNCTIONS
+// ==========
+
+@import "helpers/mixins";
+@import "helpers/functions";
+
+// ==========
+// VARIABLES
+// ==========
+
+@import "variables/susy";
+@import "variables/colors";
+@import "variables/themes";
+@import "variables/typography";
+
+// ==========
+// THEME RESET & BASE FILES
+// ==========
+
+@import "base/reset";
+@import "base/extends";
+@import "base/typography";
+
+// ==========
+// LAYOUTS - All Susy and other span related layouts go here
+// ==========
+@import "layouts/layouts";
+
+// ==========
+// MODULES STYLES
+// ==========
+
+@import "modules/header";
+@import "modules/navigation";
+@import "modules/footer";
+// @import "modules/buttons";
+// @import "modules/tables";
+// @import "modules/dropdown";
+//
+// ... your modules here
+
+
+// ==========
+// PAGE SPECIFIC STYLES
+// ==========
+
+// @import "pages/home";
+// @import "pages/contact";
+
+// ... your page here
+
+// ==========
+// SHAME - For new style snippets that haven't been sorted and commented yet
+// ==========
+
+@import "shame";

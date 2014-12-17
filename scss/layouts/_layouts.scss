@@ -1,0 +1,287 @@
+// ==========
+// LAYOUTS
+// -----
+// This document is supposed to hold all your layouts for your website.
+// It also contains a $contexts map to hold all different contexts that
+// you might require.
+//
+// As you write your spans, merge the current context into the $contexts
+// map so you can easily get the context out whenever you need it to.
+//
+// I've also provided an example of how toz do this.
+// ==========
+// Creates a context map
+$contexts: () !default;
+
+// declaring variables for use with breakpoints
+$tablet: 660px;
+$desktop: 980px;
+
+@include sticky-footer(54px, "#my-root", "#my-root-footer", "#my-footer");
+
+body {
+  background-color: color(cararra);
+  font-family:"effra",sans-serif;
+  font-style: normal;
+  font-size: 1.125rem;
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+
+//layout
+
+.wrap {
+  @include container();
+  padding-left: 15px;
+  padding-right: 15px;
+  // breakpoint for tablet view
+  @include breakpoint($tablet) {
+  @include show-grid(9);
+  }
+
+  // breakpoint for desktop view
+  @include breakpoint($desktop) {
+  @include show-grid(16)
+  }
+}
+
+.content {
+  @include cf;
+  @include breakpoint($desktop) {
+  @include span(16 of 16 last);
+  }
+}
+
+.content {
+  @include border-radius(3px);
+  margin-top: 5vh;
+  padding-bottom: 1rem;
+  //background: lighten(color(rum), 40%);
+}
+
+
+.content2 {
+  @include cf;
+  @include breakpoint($desktop) {
+  @include span(12 of 16 last);
+  }
+}
+
+.content2 {
+  @include border-radius(3px);
+  margin-top: 3vh;
+  padding-bottom: 1rem;
+  //background: lighten(color(rum), 40%);
+  background:#fff;  
+}
+
+.sidebar {
+  @include cf;
+  @include breakpoint($desktop) {
+  @include span(4 of 16 first);
+  }
+}
+
+.sidebar {
+  @include border-radius(3px);
+  margin-top: 3vh;
+  //background: lighten(color(rum), 40%);
+  background:#fff;
+  padding-bottom: 1rem;
+  li {
+    list-style: none;
+    line-height: 1.7;
+    i { line-height: 1.4; }
+    a {
+      color:color(bossanova);
+      text-decoration: none;
+    }
+     a:hover {
+      color:color(trendy-pink);
+      @include single-transition(all, .2s, ease-out);
+    }
+  }
+}
+
+.gallery {
+  @include cf;
+  @include breakpoint($desktop) {
+    padding-left: span(1 of 12 wide);
+    padding-right: span(1 of 12 wide);
+  }
+}
+
+.gallery__item {
+  img {
+    opacity:1;
+    @include border-radius(150px);
+    vertical-align: middle;
+  }
+  @include border-radius(150px);
+  border: 5px solid #fff;
+  width: 300px;
+  list-style: none;
+  background: #fff;
+  @include breakpoint(max-width $tablet) {
+    @include span(3 of 9);
+    margin-bottom: gutter(9);
+    border: 3px solid #fff;
+    &:nth-child(3n) {
+      @include last;
+    }
+  }
+
+  @include breakpoint($tablet $desktop) {
+    @include span(3 of 9);
+    margin-bottom: gutter(9);
+    &:nth-child(3n) {
+      @include last;
+    }
+  }
+
+  @include breakpoint($desktop) {
+    @include span(3.33 of 10);
+    margin-bottom: gutter(10);
+    &:nth-child(3n) {
+      @include last;
+    }
+  }
+}
+
+.gallery__item:hover {
+      @include box-shadow(color(trendy-pink) 0px 0px 10px);
+      @include single-transition(all, .2s, ease-out);
+    }
+
+.site-header {
+    @include single-transition(all, 1s, ease-out);
+    @include background(linear-gradient(bottom left, rgba(color(cararra), 1), rgba(color(cararra), 0.6)),image-url('/images/bg.jpg'));
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    margin: 0 auto;
+    position: relative;
+    display: block;
+    height: 12em;
+    width: span(16 of 16 first);
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
+    @include breakpoint($tablet) {
+    @include background(linear-gradient(bottom left, rgba(color(cararra), 0.9), rgba(color(cararra), 0)),image-url('/images/bg.jpg'));
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height: 24vh;
+    transition: min-height 0.4s;
+    }
+}
+
+.logo {
+  @include cf;
+  @include span(12 of 16);
+  @include breakpoint($tablet) {
+  @include span(6 of 16 first);
+  }
+  position: absolute;
+  bottom: 0; 
+  @include breakpoint($desktop) {
+  @include span(4 of 16 first);
+  }
+}
+
+.intro {
+  font-size:1.5rem;
+  margin-bottom: 2rem;
+}
+
+.site-footer {
+  @include cf;
+  margin-top:5vh;
+  background: lighten(color(rum), 40%);
+  height:100px;
+  border-top: .5vh solid color(rum);
+  @include breakpoint($desktop) {
+    height:50px;
+    }
+}
+
+.widget {
+  background: lighten(color(rum), 40%);
+  @include gallery(4 of 8);
+   a {
+      color:color(bossanova);
+      text-decoration: none;
+    }
+     a:hover {
+      color:darken(color(bossanova), 40%);
+      @include single-transition(all, .2s, ease-out);
+    }
+    @include breakpoint($desktop) {
+      @include gallery(4 of 16);
+  }
+}
+
+.navigation {
+  background-color: color(rum);
+  border-top:1vh solid color(bossanova);
+}
+
+.child-one {
+  @include cf;
+  @include border-radius(4px, 4px);
+  @include span(8 of 10 at 2);
+  //background: lighten(color(rum), 35%);
+  p {
+    color:darken(color(bossanova), 10%);
+    line-height: 1.5;
+    //padding: gutter(3);
+  }
+}
+/*
+.child-two {
+  @include cf;
+  @include border-radius(4px, 4px);
+  @include span(3 of 10 at 7 last);
+  border:1px dashed color(bossanova);
+  background: lighten(color(rum), 35%);
+}
+*/
+
+h1 {
+  padding: 1rem 0;
+  text-align: center;
+  color: color(bossanova);
+  font-family: "effra",sans-serif;
+  font-weight: 400;
+}
+
+h2 {
+  padding: 3rem 0 1.5rem 0;
+  text-align: left;
+  color: color(bossanova);
+  font-weight: 900;
+}
+
+h3 {
+  padding: 3rem 0 1.5rem 0;
+  text-align: left;
+  color: color(bossanova);
+  padding-left: span(1 of 10 wide);
+  font-weight: 900;
+}
+
+h4 {
+  padding-top: 1rem;
+  text-align: left;
+  color: color(bossanova);
+  font-weight: 400;
+}
